@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baarakallah Fii Umrik Hamdan</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      position: relative;
+      z-index: 10;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      color: #2c3e50;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 1.2em;
+      color: #34495e;
+      margin-top: 5px;
+    }
+
+    .photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #3498db;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    /* Animasi balon */
+    .balloon {
+      position: absolute;
+      bottom: -150px;
+      width: 60px;
+      height: 80px;
+      border-radius: 50%;
+      animation: float 10s infinite ease-in;
+      opacity: 0.8;
+    }
+
+    .balloon::before {
+      content: "";
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      width: 2px;
+      height: 25px;
+      background: #555;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-110vh) rotate(20deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Foto Hamdan -->
+    <img src="hamdan.jpg" alt="Foto Hamdan" class="photo">
+    <h1>🎉 Baarakallah Fii Umrik Hamdan 🎉</h1>
+    <p>Semoga Allah memberkahi umurmu, memberikan kesehatan, kebahagiaan, dan keberkahan dalam setiap langkahmu.</p>
+  </div>
+
+  <!-- Musik Nasyid (akan otomatis diputar saat masuk halaman) -->
+  <audio id="nasyid" src="nasyid.mp3" autoplay loop></audio>
+
+  <script>
+    // Membuat balon otomatis naik
+    function createBalloon() {
+      const balloon = document.createElement("div");
+      balloon.className = "balloon";
+      balloon.style.left = Math.random() * window.innerWidth + "px";
+      balloon.style.backgroundColor = randomColor();
+      balloon.style.animationDuration = (6 + Math.random() * 4) + "s";
+      document.body.appendChild(balloon);
+
+      setTimeout(() => {
+        balloon.remove();
+      }, 10000);
+    }
+
+    function randomColor() {
+      const colors = ["#ff6f61", "#6a89cc", "#82ccdd", "#b8e994", "#f8c291", "#e55039", "#60a3bc"];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    setInterval(createBalloon, 800);
+  </script>
+
+</body>
+</html>
